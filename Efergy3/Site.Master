@@ -1,0 +1,433 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Efergy3.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<%-- "----------------------------------------------HEAD------------------------------------" --%>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Штеди струја</title>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="Images/iconlogo2.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <link href="Content/styles.css" rel="stylesheet" />
+    <link href="Content/magiczoomplus.css" rel="stylesheet" />
+    <link href="Content/magnific-popup.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="Scripts/ajax-reviews.js"></script>
+    <script src="Scripts/bjqs-1.3.js"></script>
+    <script src="Scripts/bjqs-1.3.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/builder.js"></script>
+    <script src="Scripts/ccard.js"></script>
+    <script src="Scripts/controls.js"></script>
+    <script src="Scripts/cookies.js"></script>
+    <script src="Scripts/dragdrop.js"></script>
+    <script src="Scripts/effects.js"></script>
+    <script src="Scripts/em0008.js"></script>
+    <script src="Scripts/EventDispatcher.js"></script>
+    <script src="Scripts/FishEye.js"></script>
+    <script src="Scripts/form.js"></script>
+    <script src="Scripts/jquery.dd.js"></script>
+    <script src="Scripts/js.js"></script>
+    <script src="Scripts/magictoolbox_utils.js"></script>
+    <script src="Scripts/magiczoomplus.js"></script>
+    <script src="Scripts/menu.js"></script>
+    <script src="Scripts/modernizr-2.5.3.js"></script>
+
+    <%--<script src="Scripts/noconflict.js"></script>
+    <script src="Scripts/protoshow.js"></script>
+    <script src="Scripts/prototype.js"></script>--%>
+
+    <script src="Scripts/roundtrip.js"></script>
+
+    <script src="Scripts/scriptaculous.js"></script>
+    <script src="Scripts/scrollToTop.js"></script>
+    <script src="Scripts/selectreplace.js"></script>
+    <script src="Scripts/slider.js"></script>
+    <script src="Scripts/tabs.js"></script>
+    <script src="Scripts/translate.js"></script>
+    <script src="Scripts/validation.js"></script>
+    <script src="Scripts/vatvalidation.js"></script>
+    <script src="Scripts/watch.js"></script>
+    <script src="Scripts/window.js"></script>
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/jssor.slider.mini.js"></script>
+    <script src="Scripts/jssor.js"></script>
+    <script src="Scripts/jssor.slider.js"></script>
+
+
+
+</head>
+<%-- "-----------------------------------------------BODY---------------------------------------------------------" --%>
+
+<body>
+    <form runat="server">
+        <div class="page">
+            <div class="std">
+                <asp:ScriptManager runat="server">
+                    <Scripts>
+                        <%--Framework Scripts--%>
+                        <asp:ScriptReference Name="MsAjaxBundle" />
+                        <asp:ScriptReference Name="jquery" />
+                        <asp:ScriptReference Name="jquery.ui.combined" />
+                        <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                        <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                        <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                        <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                        <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                        <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                        <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                        <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                        <asp:ScriptReference Name="WebFormsBundle" />
+                        <%--Site Scripts--%>
+                    </Scripts>
+                </asp:ScriptManager>
+
+                <%-- "------------------------------------------------HEADER------------------------------------------------------" --%>
+
+                <script>
+
+                    jQuery(document).ready(function ($) {
+
+                        var _SlideshowTransitions = [
+                        //Fade
+                        { $Duration: 1200, $Opacity: 2 }
+                        ];
+
+                        var options = {
+                            $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                            $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
+                            $AutoPlayInterval: 3000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                            $PauseOnHover: 1,                               //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+                            $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                            $SlideDuration: 500,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+                            $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+                            //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+                            //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+                            $SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
+                            $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+                            $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+                            $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+                            $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+                            $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+                            $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
+                                $Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
+                                $Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
+                                $TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
+                                $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
+                            },
+
+                            $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
+                                $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+                                $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                                $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                                $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                                $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                                $SpacingX: 10,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                                $SpacingY: 10,                                   //[Optional] Vertical space between each item in pixel, default value is 0
+                                $Orientation: 1                                 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+                            },
+
+                            $ArrowNavigatorOptions: {
+                                $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                                $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                                $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+                            }
+                        };
+                        var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+                        //responsive code begin
+                        //you can remove responsive code if you don't want the slider scales while window resizes
+                        function ScaleSlider() {
+                            var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+                            if (parentWidth)
+                                jssor_slider1.$ScaleWidth(Math.min(parentWidth, 600));
+                            else
+                                window.setTimeout(ScaleSlider, 30);
+                        }
+                        ScaleSlider();
+
+                        $(window).bind("load", ScaleSlider);
+                        $(window).bind("resize", ScaleSlider);
+                        $(window).bind("orientationchange", ScaleSlider);
+                        //responsive code end
+                    });
+                </script>
+
+
+
+
+                <div class="header-container">
+                    <div class="header">
+
+                        <%--LOGOTO--%>
+                        <div>
+                            <a runat="server" href="http://www.euronetcom.mk/" title="Euronetcom" class="logo">
+                                <img src="Images/EuroNetCom2.jpg" alt="Euronetcom" class="img-responsive"></a>
+                        </div>
+
+                        <%--SLOGANOT--%>
+                        <%--<div class="float-right">
+                            <a href="http://www.euronetcom.mk/" title="Euronetcom" class="slogan">
+                                <img src="Images/slogan.png" alt="Euronetcom" class="img-responsive"></a>
+                        </div>--%>
+                        <div class="float-right">
+                            <object width="300" height="100">
+                                <embed src="Images/Slogan3.swf" type="application/x-shockwave-flash" class="slogan" width="300" height="100"></embed>
+                            </object>
+                        </div>
+
+                    </div>
+
+
+                    <div class="float-rightzname">
+                        <a href="AL.aspx" title="Albanian">
+                            <img src="Images/AL.png" class="img-responsive" />SQ</a>
+                    </div>
+
+                    <div class="float-rightzname">
+                        <a href="Default.aspx" title="Macedonian">
+                            <img src="Images/MK.png" class="img-responsive" />MK</a>
+                    </div>
+                </div>
+
+                <%-- "------------------------------------------------MENU--------------------------------------" --%>
+                <a href="#" class="scrollToTop"></a>
+                <nav class="navigation cf">
+                    <div class="menu-main-menu-container">
+                        <ul id="menu-main-menu" class="menu">
+
+                            <%-- "------------------------------------------------TAB1--------------------------------------" --%>
+                            <li id="menu-item-1679" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-cat-17 menu-item-1679">
+                                <a href="Produkti.aspx">Продукти</a>
+                                <ul class="sub-menu">
+                                    <li id="Li1" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2090">
+                                        <a href="AvtomatskaKontrola.aspx">Автоматска контрола</a></li>
+                                    <li id="Li2" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2088">
+                                        <a href="EliteMonitoring.aspx">Elite мониторинг</a></li>
+                                    <li id="Li3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2091">
+                                        <a href="OnlineMonitoring.aspx">On-line мониторинг</a></li>
+                                    <li id="Li4" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2092">
+                                        <a href="Dodatoci.aspx">Додатоци</a></li>
+                                </ul>
+                            </li>
+
+                            <%-- "------------------------------------------------TAB2--------------------------------------" --%>
+                            <li id="menu-item-2087" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2087">
+                                <a href="Poddrska.aspx">Поддршка</a>
+                            </li>
+
+                            <%-- "------------------------------------------------TAB3--------------------------------------" --%>
+                            <li id="menu-item-2023" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2023">
+                                <a href="https://engage.efergy.com/">Engage платформа</a></li>
+
+                            <%-- "------------------------------------------------TAB4--------------------------------------" --%>
+                            <li id="menu-item-1682" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-cat-18 menu-item-1682">
+                                <a href="Contact.aspx">Контакт</a>
+
+                            </li>
+                            <%-- "------------------------------------------------TAB 5 SIGN IN--------------------------------------" --%>
+                            <li id="menu-item-1555" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-cat-18 menu-item-1555">
+                                <a href="http://efergy.com/uk/customer/account/login/">Најави се
+                                     <img src="Images/cart.png" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <%--KRAJ NA MENITO--%>
+                <p>
+                    <img class="img-sep" src="Images/bottomshadow.jpg" />
+                </p>
+                <%-- "------------------------------------------------GLAVNA SODRZINA----------------------------------" --%>
+                <div id="body">
+                    <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+                    <section class="content-wrapper main-content clear-fix">
+                        <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+                    </section>
+                </div>
+
+                <%-- "---------------------------------------------------FOOTER-----------------------------------------" --%>
+
+                <%-- "---------------------------------------------------socijalizacija-----------------------------------------" --%>
+
+                <div id="footermiddle">
+                    <div id="social">
+                        <h2>Сподели</h2>
+                        <div class="socialicons">
+
+                            <%--facebook--%>
+                            <a title="Facebook" href="http://www.facebook.com/pages/eFergy/327978494717" rel="nofollow" target="_blank">
+                                <img src="Images/facebook.png" alt=""></a>
+
+                            <%--linkedin--%>
+                            <a title="Linkedin" href="http://www.linkedin.com/company/efergy-technologies-limited" rel="nofollow" target="_blank">
+                                <img src="Images/linkedin.png" alt=""></a>
+
+                            <%--twitter--%>
+                            <a title="Twitter" href="https://twitter.com/#!/efergy" rel="nofollow" target="_blank">
+                                <img src="Images/twitter.png" alt=""></a>
+
+                            <%--google+--%>
+                            <a title="Google+" href="https://plus.google.com/106910709561569331175" rel="nofollow" target="_blank">
+                                <img src="Images/gplus.png" alt=""></a>
+
+                        </div>
+
+                    </div>
+                </div>
+                <%-- "--------------------------------------------------------------------------------------------" --%>
+                <footer>
+
+                    <div id="footer_full_links">
+                        <div class="footer_product">
+                            <span class="foot_title">Продукти</span> <a href="AvtomatskaKontrola.aspx">Автоматска контрола</a><br>
+                            <a href="EliteMonitoring.aspx">Elite Мониторниг</a><br>
+                            <a href="OnlineMonitoring.aspx">Online Мониторинг</a>
+                        </div>
+                        <div class="footer_product">
+                            <span class="foot_title" style="clear: both; width: 162px;">Поддршка</span>
+                            <br>
+                            <div style="float: left; clear: both;">
+                                <a href="http://efergy.com/uk/instructionvideos/">Видео инструкции</a>
+                                <br>
+                                <a href="http://efergy.com/uk/faq/">Најчесто поставувани<br />
+                                    прашања</a>
+                            </div>
+                            <div style="float: left; margin-left: 15px;">
+                                <a href="Poddrska.aspx">Техничка поддршка</a>
+                                <br>
+                                <a href="http://efergy.com/uk/customer-services/">Услуга за клиенти</a>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="footer_product">
+                            <span class="foot_title">Заедница</span> <a href="http://efergy.com/uk/community/">Engage</a><br>
+                            <a href="http://efergy.com/uk/efergy-tips/">Совети</a><br>
+                            <a href="http://efergy.com/uk/ourvideos/">Видеo</a>
+                        </div>
+                        <div class="footer_product" style="border-right: 0px;">
+                            <span class="foot_title">Контакт</span> <a href="http://efergy.com/uk/contact/">За Efergy</a><br>
+                            <a href="http://efergy.com/uk/local-distributor/">Вашиот локален<br />
+                                дистрибутер</a><br>
+                        </div>
+                        <div class="footnews">
+                            <div class="block block-subscribe">
+                                <div class="block-title">
+                                    <strong><span>Newsletter</span></strong>
+                                </div>
+                                <form action="http://efergy.us4.list-manage.com/subscribe/post?u=57a2e9672cd7921dbdf37a3c4&amp;id=f437282147" method="post" id="newsletter-validate-detail" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                                    <div class="block-content">
+                                        <label for="newsletter">Претплатете се:</label>
+                                        <div class="input-box" style="width: 117px; display: inline-block;">
+                                            <input type="text" name="EMAIL" id="mce-EMAIL" placeholder="email адреса" title="Sign up for our newsletter" class="input-text required-entry validate-email">
+                                        </div>
+                                        <div class="actions" style="display: inline;">
+                                            <button type="submit" name="subscribe" id="mc-embedded-subscribe" value="Subscribe" title="Subscribe" class="button"><span><span>Go</span></span></button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <script type="text/javascript">
+                                    //<![CDATA[
+                                    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+                                    //]]>
+                                </script>
+                            </div>
+
+
+
+                            <!--
+<div class="countrychooser">
+<ul id="nav2" >
+<li style="
+ "> 
+ 
+ 
+<a href="#">Choose your country</a><ul>
+
+
+ <li style="background:url('/skin/frontend/em0008/default/images/uk.png') left no-repeat transparent;padding-left:40px; " id=""> <a href="http://www.efergy.com/">United Kingdom</a>
+ </li> 
+ 
+ 
+  <li style="background:url('/skin/frontend/em0008/default/images/usa.png') left no-repeat transparent;padding-left:40px; " id="">  <a href="http://www.efergy.us/">USA</a>
+  </li>
+
+ 
+ 
+ <li style="background:url('/skin/frontend/em0008/default/images/canada.png') left no-repeat transparent;padding-left:40px; " id=""> <a href="http://www.efergycanada.ca/">Canada</a>
+ </li>
+ 
+  <li style="background:url('/skin/frontend/em0008/default/images/australia.png') left no-repeat transparent;padding-left:40px; " id=""> <a href="http://www.efergy.net.au/">Australia</a></li> 
+  
+  
+   <li style="background:url('/skin/frontend/em0008/default/images/europe.png') left no-repeat transparent;padding-left:40px; " id=""> <a href="http://www.efergy.eu/">Europe</a></li> 
+   
+   
+    <li style="background:url('/skin/frontend/em0008/default/images/spain.png') left no-repeat transparent;padding-left:40px; " id=""> <a href="http://www.efergy.eu/index.php/es/">Spain</a></li> 
+    
+    
+     <li style="background:url('/skin/frontend/em0008/default/images/southafrica.png') left no-repeat ;padding-left:40px; " id="">  <a href="http://www.efergy.co.za/">South Africa</a>
+ </li>
+ 
+ 
+ 
+  <li style="background:url('/skin/frontend/em0008/default/images/france.png') left no-repeat transparent;padding-left:40px; " id="">  <a href="http://www.efergy-france.fr/">France</a>
+ </li> 
+ 
+ 
+  <li style="background:url('/skin/frontend/em0008/default/images/greece.png') left no-repeat transparent;padding-left:40px; " id="">  <a href="http://www.efergy-hellas.gr/">Greece</a>
+ </li> 
+   <li style="background:url('/skin/frontend/em0008/default/images/port.png') left no-repeat transparent;padding-left:40px; " id="">  <a href="http://www.efergy.com.pt">Portugal</a>
+   </li> 
+   
+    <li style="background:url('/skin/frontend/em0008/default/images/newz.png') left no-repeat transparent;padding-left:40px; " id="">  <a href="http://efergy.co.nz">New Zealand</a>
+   </li> 
+   
+</ul>
+<ul>
+</ul>
+  </li>
+  </ul>
+  
+
+			</div>
+-->
+                        </div>
+                        <div id="terms">
+                            <a href="http://efergy.com/uk/terms/">Услови и правила</a>&nbsp;&nbsp
+                            <a href="http://efergy.com/uk/privacy/">Политика за приватност</a>&nbsp;&nbsp;
+                            <a href="http://efergy.com/uk/cookies/">Колачиња</a>&nbsp;&nbsp;
+                            <strong>
+                            <a style="background-color: #ffffff;">Ул."Кеј 13-ти Ноември, кула бр.3, локал 238-Скопје, Македонија</a>
+                            
+                            <a href="#" style="float: right;">© 2014 Efergy Technologies Limited</a></strong>
+                        </div>
+                        <div>
+                            <br>
+                            <div>&nbsp;</div>
+                            <strong><a href="#">
+                                <br>
+                            </a><span style="float: right;"><strong>&nbsp;</strong><br>
+                            </span></strong>
+                        </div>
+                        <div style="text-align: right;">&nbsp;</div>
+                    </div>
+                    <p></p>
+            </div>
+        </div>
+        </footer>
+    </form>
+
+</body>
+</html>

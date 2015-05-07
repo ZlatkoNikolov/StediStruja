@@ -1,0 +1,6 @@
+var navTabClass='subsection_tabs';var navTabSelectedClass='selected';var defaultTabId='defaultTab';var preventDefaultEventonTabSelect=1;function showTab(e){var target,id,liElm,aElm,targetId;elm=$(e);if(elm.tagName=='A'){liElm=elm.parentNode;aElm=elm;}else{liElm=elm;aElm=elm.firstDescendant();}
+target=aElm.readAttribute('href').strip();liElm.siblings().invoke('removeClassName',navTabSelectedClass);liElm.addClassName(navTabSelectedClass);if(target.startsWith('#')){targetId=target.substring(1);var targetElm=$(targetId);targetElm.siblings().invoke('hide');targetElm.show();}}
+function showTabEvent(Event){var elm=Event.element();showTab(elm);if(preventDefaultEventonTabSelect)Event.preventDefault();}
+function markEvent(event){var node=Event.element(event);node.style.color="green";}
+document.observe('dom:loaded',function(){$$('.'+navTabClass+' li').each(function(e){e.observe('click',showTabEvent);});if($(defaultTabId)==null){showTab($$('.'+navTabClass).first().firstDescendant());}else{showTab($(defaultTabId));}})
+function setNewStyleSheet(ss){$$('link[rel="stylesheet"]').invoke('remove');$$('link[rel="stylesheet"]').invoke('remove');var attrs={type:"text/css",href:ss,rel:"stylesheet"};var sslink=new Element('link',attrs);$$('head').invoke('insert',sslink);}

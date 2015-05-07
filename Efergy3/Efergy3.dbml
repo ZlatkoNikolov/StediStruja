@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Efergy" Class="Efergy3DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Efergy.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Category" Member="Categories">
+    <Type Name="Category">
+      <Column Name="categoryid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="catname" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Category_Product" Member="Products" ThisKey="categoryid" OtherKey="categoryid" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductDetails" Member="ProductDetails">
+    <Type Name="ProductDetail">
+      <Column Name="ProductDetailsId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="img1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img6" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img7" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img8" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img9" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img10" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img11" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img12" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img13" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img14" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="img15" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Product_ProductDetail" Member="Product" ThisKey="ProductId" OtherKey="productid" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="productid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="proname" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="rating" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="minimalprice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="oldprice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="image" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="categoryid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="video" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="tekstDetali" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="slikiDetali" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Product_ProductDetail" Member="ProductDetails" ThisKey="productid" OtherKey="ProductId" Type="ProductDetail" />
+      <Association Name="Category_Product" Member="Category" ThisKey="categoryid" OtherKey="categoryid" Type="Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

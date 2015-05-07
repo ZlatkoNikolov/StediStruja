@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Efergy3">
+  <DataContextMoniker Name="/Efergy3DataContext" />
+  <nestedChildShapes>
+    <classShape Id="ef2340e1-5873-4168-95fd-a5c03fe68a24" absoluteBounds="1.5, 1, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/Efergy3DataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4e2ee9e9-1dfb-42fb-ac86-15e4366ca26e" absoluteBounds="1.5150000000000001, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13e5f0a9-2f7c-437e-9077-ebf312da7b98" absoluteBounds="0.5, 2.375, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/Efergy3DataContext/ProductDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ab21a98d-5e74-4fbd-b91b-ab41cd7cbec4" absoluteBounds="0.51500000000000012, 2.835, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="04239875-de31-4db4-aa5d-23a64ad79148" absoluteBounds="3.875, 2.625, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/Efergy3DataContext/Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fb19b1bc-8158-4bde-8f38-110cf575a18f" absoluteBounds="3.8899999999999997, 3.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.875 : 4.08735270182292); (2.5 : 4.08735270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/Efergy3DataContext/Product/Product_ProductDetail" />
+      <nodes>
+        <classShapeMoniker Id="04239875-de31-4db4-aa5d-23a64ad79148" />
+        <classShapeMoniker Id="13e5f0a9-2f7c-437e-9077-ebf312da7b98" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 2.19399251302083); (3.875 : 2.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/Efergy3DataContext/Category/Category_Product" />
+      <nodes>
+        <classShapeMoniker Id="ef2340e1-5873-4168-95fd-a5c03fe68a24" />
+        <classShapeMoniker Id="04239875-de31-4db4-aa5d-23a64ad79148" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
